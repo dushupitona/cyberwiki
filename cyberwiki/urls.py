@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from cybersport.views import IndexView
+from cybersport.views import IndexView, TournamentDetailView, CommandDetailView
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -24,7 +24,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',IndexView.as_view(), name='index')
+    path('',IndexView.as_view(), name='index'),
+    path('tournament/<int:tournament_id>',TournamentDetailView.as_view(), name='tournament_go'),
+    path('command/<int:command_id>',CommandDetailView.as_view(), name='command_go'),
+
 ]
 
 

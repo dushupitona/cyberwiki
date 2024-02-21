@@ -21,8 +21,4 @@ class PlayerAdmin(admin.ModelAdmin):
 
 @admin.register(TournamentModel)
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ['tournament_name', 'tournament_type', 'tournament_tier', 'tournament_start_date']
-
-
-admin.site.register(PlayerCommandModel)
-admin.site.register(TournamentCommandModel)
+    list_display = ['tourn_name', 'tourn_type', 'tourn_tier', 'tourn_start_date']

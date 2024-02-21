@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cybersport',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

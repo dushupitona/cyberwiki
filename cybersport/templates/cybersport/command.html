@@ -11,17 +11,18 @@
 
 
     <div class="nav_bar">
-        <h1>Турниры</h1>
+        <h1>{{ name }}</h1>
     </div>
 
 
     <div class="tournament_container">
-        {% for tournament in tournament_list %}
+        {% for player in player_list %}
             <div class="tournament-card">
-                <a href="{% url "tournament_go" tournament.id %}">
+                <a href="">
                     <div>
-                        <img class="tournament-image" src="{{ tournament.tourn_image.url }}" alt="Cant load image">
-                        <h2>{{ tournament.tourn_name }}</h2>
+                        <img class="tournament-image" src="{{ player.player_image.url }}" alt="Cant load image">
+                        <h2>{{ player.player_nickname }}</h2>
+                        <h2>{{ player.player_name }}</h2>
                     </div>
                 </a>
             </div>

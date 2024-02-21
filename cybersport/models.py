@@ -27,34 +27,26 @@ class PlayerModel(models.Model):
     player_nickname = models.CharField(max_length=64)
     player_nationality = models.CharField(max_length=64)
     player_birth_day = models.DateField()
-    player_current_role = models.CharField(max_length=64)
+    player_position = models.IntegerField()
     player_total_winnings = models.IntegerField()
-    player_discipline_id =models.ForeignKey(to=DisciplineModel, on_delete=models.CASCADE)
+    player_discipline_id = models.ForeignKey(to=DisciplineModel, on_delete=models.CASCADE)
+    player_command_id = models.ForeignKey(to=CommandModel, on_delete=models.CASCADE, related_name='players')
 
     def __str__(self):
         return self.player_nickname
 
 
 class TournamentModel(models.Model):
-    tournament_image = models.ImageField(upload_to='media')
-    tournament_name = models.CharField(max_length=64)
-    tournament_type = models.CharField(max_length=64)
-    tournament_location = models.CharField(max_length=64)
-    tournament_prize_pool = models.IntegerField()
-    tournament_start_date = models.DateField()
-    tournament_end_date = models.DateField()
-    tournament_discipline_id =models.ForeignKey(to=DisciplineModel, on_delete=models.CASCADE)
-    tournament_tier = models.IntegerField()
+    tourn_image = models.ImageField(upload_to='media')
+    tourn_name = models.CharField(max_length=64)
+    tourn_type = models.CharField(max_length=64)
+    tourn_location = models.CharField(max_length=64)
+    tourn_prize_pool = models.IntegerField()
+    tourn_start_date = models.DateField()
+    tourn_end_date = models.DateField()
+    tourn_discipline_id = models.ForeignKey(to=DisciplineModel, on_delete=models.CASCADE)
+    tourn_tier = models.IntegerField()
+    tourn_command = models.ManyToManyField(to=CommandModel) 
 
     def __str__(self):
-        return self.tournament_name
-
-
-class PlayerCommandModel(models.Model):
-    pc_player_id = models.ForeignKey(to=PlayerModel, on_delete=models.CASCADE)
-    pc_command_id = models.ForeignKey(to=CommandModel, on_delete=models.CASCADE)
-
-
-class TournamentCommandModel(models.Model):
-    tc_tournament_id = models.ForeignKey(to=TournamentModel, on_delete=models.CASCADE)
-    tc_command_id = models.ForeignKey(to=CommandModel, on_delete=models.CASCADE)
+        return self.tourn_name
